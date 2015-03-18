@@ -18,9 +18,15 @@
       <script src="assets/lib/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-controller="BodyController">
+  <body>
 
-    <div>{{greeting}}</div>
+    <header ng-controller="HeaderController" ng-include="'assets/app/partials/header-navbar.html'">
+
+    </header>
+
+    <section id="main" ng-view></section>
+
+    <footer ng-include="'assets/app/partials/footer.html'"></footer>
 
     <script src="assets/lib/log4javascript-1.4.10.js"></script>
     <script src="assets/lib/jquery-1.11.2.min.js"></script>

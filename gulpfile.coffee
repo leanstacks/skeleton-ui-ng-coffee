@@ -82,7 +82,7 @@ gulp.task 'dist', ['clean'], ->
   sequence ['lib', 'templates', 'scripts', 'html', 'css', 'images'], 'tar'
 
 gulp.task 'run', ['lib', 'templates', 'scripts', 'html', 'stylehtml', 'css', 'images'], ->
-  gulp.watch 'src/main/app/templates/**/*.html', ['templates']
+  gulp.watch 'src/main/app/partials/**/*.html', ['templates']
   gulp.watch 'src/main/app/coffee/**/*.coffee', ['scripts']
   gulp.watch 'src/main/app/*.html', ['html']
   gulp.watch 'src/main/app/styleguide.html', ['stylehtml']

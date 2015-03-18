@@ -1,0 +1,22 @@
+footer {
+  margin-top: 50px;
+}
+
+.link-danger:link,.link-danger:visited {
+  color: #bbbbbb;
+}
+.link-danger:hover {
+  color: #e52c23;
+}
+.link-danger:active {
+  color: #e52c23;
+}
+.link-black:link,.link-black:visited {
+  color: #bbbbbb;
+}
+.link-black:hover {
+  color: #000000;
+}
+.link-danger:active {
+  color: #000000;
+}
