@@ -1,9 +1,30 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <ul ng-repeat="greeting in greetings">
-        <li>{{greeting.text}}</li>
-      </ul>
+      <div class="page-header">
+        <h1>
+          <i class="fa fa-list text-primary"></i> Greeting List
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Greeting</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="greeting in greetings">
+            <td>{{greeting.text}}</td>
+            <td>{{greeting.lang}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
