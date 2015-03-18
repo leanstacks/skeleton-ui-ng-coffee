@@ -1,0 +1,13 @@
+[
+  {
+    "text": "Hello World!",
+    "lang": "en"
+  },{
+    "text": "Hola Mundo!",
+    "lang": "es"
+  },{
+    "text": "Bonjour Le Monde!",
+    "lang": "fr"
+  }
+
+]

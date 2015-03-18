@@ -3,6 +3,7 @@
 skeletonApp = angular.module 'skeletonApp', [
   'ngRoute',
   'skeletonControllers'
+  'skeletonServices'
 ]
 
 skeletonApp.config ['$routeProvider',

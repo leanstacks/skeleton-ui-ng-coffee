@@ -27,7 +27,7 @@ gulp.task 'lib', ->
     .pipe(gulp.dest('dist/assets/lib'))
 
 gulp.task 'scripts', ->
-  gulp.src(['src/main/app/coffee/controllers.coffee','src/main/app/coffee/application.coffee'])
+  gulp.src(['src/main/app/coffee/services.coffee','src/main/app/coffee/controllers.coffee','src/main/app/coffee/application.coffee'])
     .pipe(coffeelint())
     .pipe(coffeelint.reporter())
     .pipe(sourcemaps.init())
@@ -64,6 +64,10 @@ gulp.task 'images', ->
   gulp.src('src/main/app/img/**/*')
     .pipe(gulp.dest('dist/assets/app/img'))
 
+gulp.task 'data', ->
+  gulp.src('src/main/app/data/**/*')
+    .pipe(gulp.dest('dist/assets/app/data'))
+
 gulp.task 'tar', ->
   gulp.src('dist/**')
     .pipe(tar("#{config.name}.tar"))
@@ -76,18 +80,19 @@ gulp.task 'unittest', ->
     singleRun: true
 
 gulp.task 'default', ['clean'], ->
-  gulp.start 'lib', 'templates', 'scripts', 'html', 'css', 'images'
+  gulp.start 'lib', 'templates', 'scripts', 'html', 'css', 'images', 'data'
 
 gulp.task 'dist', ['clean'], ->
-  sequence ['lib', 'templates', 'scripts', 'html', 'css', 'images'], 'tar'
+  sequence ['lib', 'templates', 'scripts', 'html', 'css', 'images', 'data'], 'tar'
 
-gulp.task 'run', ['lib', 'templates', 'scripts', 'html', 'stylehtml', 'css', 'images'], ->
+gulp.task 'run', ['lib', 'templates', 'scripts', 'html', 'stylehtml', 'css', 'images', 'data'], ->
   gulp.watch 'src/main/app/partials/**/*.html', ['templates']
   gulp.watch 'src/main/app/coffee/**/*.coffee', ['scripts']
   gulp.watch 'src/main/app/*.html', ['html']
   gulp.watch 'src/main/app/styleguide.html', ['stylehtml']
   gulp.watch 'src/main/app/css/**/*.css', ['css']
   gulp.watch 'src/main/app/img/**/*', ['images']
+  gulp.watch 'src/main/app/data/**/*', ['data']
   gulp.watch 'lib/**', ['lib']
 
   gulp.src('dist')
@@ -97,4 +102,4 @@ gulp.task 'run', ['lib', 'templates', 'scripts', 'html', 'stylehtml', 'css', 'im
     ))
 
 gulp.task 'test', ['clean'], ->
-  sequence ['lib', 'templates', 'scripts', 'html', 'css', 'images'], 'unittest'
+  sequence ['lib', 'templates', 'scripts', 'html', 'css', 'images', 'data'], 'unittest'

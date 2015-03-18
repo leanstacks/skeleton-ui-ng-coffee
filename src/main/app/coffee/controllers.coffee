@@ -7,7 +7,6 @@ skeletonControllers.controller 'HeaderController', ['$scope',
     console.log '> HeaderController'
 
     $scope.preventDefaultAction = (e) ->
-      console.log '  menu header clicked'
       e.preventDefault()
 
     console.log '< HeaderController'
@@ -22,11 +21,12 @@ skeletonControllers.controller 'HomeController', ['$scope',
 ]
 
 # Define the GreetingListController Controller
-skeletonControllers.controller 'GreetingListController', ['$scope',
-  ($scope) ->
+skeletonControllers.controller 'GreetingListController', ['$scope', 'Greeting',
+  ($scope, Greeting) ->
     console.log '> GreetingListController'
 
-    $scope.greetings = ['Hello World!', 'Hola Mundo!']
+    #$scope.greetings = ['Hello World!', 'Hola Mundo!']
+    $scope.greetings = Greeting.query()
 
     console.log '< GreetingListController'
 ]
