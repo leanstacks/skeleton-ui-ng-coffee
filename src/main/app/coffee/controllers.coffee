@@ -27,6 +27,8 @@ skeletonControllers.controller 'GreetingListController', ['$scope', 'Greeting',
 
     $scope.greetings = Greeting.query()
 
+    $scope.greetingSort = 'text'
+
     console.log '< GreetingListController'
 ]
 

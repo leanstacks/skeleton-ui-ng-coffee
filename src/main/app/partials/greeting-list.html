@@ -11,6 +11,32 @@
 
   <div class="row">
     <div class="col-md-12">
+      <form class="form-inline">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="greeting-filter">Filter:</label>
+              <input type="text" class="form-control input-sm" id="greeting-filter" placeholder="type to filter list" ng-model="greetingFilter" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group pull-right">
+              <label for="greeting-sort">Sort:</label>
+              <select class="form-control input-sm" id="greeting-sort" ng-model="greetingSort">
+                <option value="text">Alphabetical</option>
+                <option value="lang">Language</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-md-12">
       <table class="table">
         <thead>
           <tr>
@@ -19,7 +45,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="greeting in greetings">
+          <tr ng-repeat="greeting in greetings | filter:greetingFilter | orderBy:greetingSort">
             <td><a href="#/greetings/{{greeting.id}}">{{greeting.text}}</a></td>
             <td>{{greeting.lang}}</td>
           </tr>
