@@ -15,6 +15,9 @@ skeletonApp.config ['$routeProvider',
       .when '/greetings',
         templateUrl: 'assets/app/partials/greeting-list.html'
         controller: 'GreetingListController'
+      .when '/greetings/:greetingId',
+        templateUrl: 'assets/app/partials/greeting-detail.html'
+        controller: 'GreetingDetailController'
       .otherwise
         redirectTo: '/home'
 ]

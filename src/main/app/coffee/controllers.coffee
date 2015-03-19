@@ -25,8 +25,17 @@ skeletonControllers.controller 'GreetingListController', ['$scope', 'Greeting',
   ($scope, Greeting) ->
     console.log '> GreetingListController'
 
-    #$scope.greetings = ['Hello World!', 'Hola Mundo!']
     $scope.greetings = Greeting.query()
 
     console.log '< GreetingListController'
+]
+
+# Define the GreetingDetailController Controller
+skeletonControllers.controller 'GreetingDetailController', ['$scope', '$routeParams', 'Greeting',
+  ($scope, $routeParams, Greeting) ->
+    console.log '> GreetingDetailController'
+
+    $scope.greeting = Greeting.get {greetingId: $routeParams.greetingId}
+
+    console.log '< GreetingDetailController'
 ]

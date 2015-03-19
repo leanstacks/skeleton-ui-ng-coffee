@@ -20,7 +20,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="greeting in greetings">
-            <td>{{greeting.text}}</td>
+            <td><a href="#/greetings/{{greeting.id}}">{{greeting.text}}</a></td>
             <td>{{greeting.lang}}</td>
           </tr>
         </tbody>
