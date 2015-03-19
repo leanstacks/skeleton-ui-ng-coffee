@@ -41,3 +41,25 @@ skeletonControllers.controller 'GreetingDetailController', ['$scope', '$routePar
 
     console.log '< GreetingDetailController'
 ]
+
+# Define the GreetingCreateController Controller
+skeletonControllers.controller 'GreetingCreateController', ['$scope', 'Greeting',
+  ($scope, Greeting) ->
+    console.log '> GreetingCreateController'
+
+    $scope.master = {}
+
+    $scope.create = (formData) ->
+      console.log '- creating new Greeting'
+      console.log 'form data:' + JSON.stringify formData
+      newGreeting = new Greeting formData
+      newGreeting.$save()
+      $scope.reset()
+
+    $scope.reset = () ->
+      $scope.greeting = angular.copy $scope.master
+
+    $scope.reset()
+
+    console.log '< GreetingCreateController'
+]

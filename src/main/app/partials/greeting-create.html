@@ -1,0 +1,47 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>
+          <i class="fa fa-plus-circle text-primary"></i> Create a Greeting
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">
+      <a href="#/greetings" class="btn btn-default" role="button"><i class="fa fa-list"></i> List</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="greetingLanguage" class="col-sm-2 control-label">Language:</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="greetingLanguage" ng-model="greeting.lang">
+              <option value="en">English</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="greetingText" class="col-sm-2 control-label">Text:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="greetingText" placeholder="Enter a Greeting..." ng-model="greeting.text" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" ng-click="create(greeting)">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
