@@ -29,6 +29,16 @@ skeletonControllers.controller 'GreetingListController', ['$scope', '$log', 'Gre
 
     $scope.greetingSort = 'text'
 
+    $scope.showModal = (selector) ->
+      $log.log 'showModal'
+      $(selector).modal 'show'
+      null
+
+    $scope.hideModal = (selector) ->
+      $log.log 'hideModal'
+      $(selector).modal 'hide'
+      null
+
     $log.log '< GreetingListController'
 ]
 
@@ -43,23 +53,42 @@ skeletonControllers.controller 'GreetingDetailController', ['$scope', '$log', '$
 ]
 
 # Define the GreetingCreateController Controller
-skeletonControllers.controller 'GreetingCreateController', ['$scope', '$log', 'Greeting',
-  ($scope, $log, Greeting) ->
+skeletonControllers.controller 'GreetingCreateController', ['$scope', '$log',
+  ($scope, $log) ->
     $log.log '> GreetingCreateController'
+
+    $log.log '< GreetingCreateController'
+]
+
+# Define the GreetingCreateFormController Controller
+skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log', 'Greeting',
+  ($scope, $log, Greeting) ->
+    $log.log '> GreetingCreateFormController'
 
     $scope.master = {}
 
-    $scope.create = (formData) ->
+    # formData - required parameter
+    # modalSelector - pass DOM selector if form embedded in modal
+    $scope.create = (formData, modalSelector) ->
       $log.log '- creating new Greeting'
       $log.log 'form data:' + JSON.stringify formData
       newGreeting = new Greeting formData
-      newGreeting.$save()
-      $scope.reset()
+      newGreeting.$save(
+        (savedGreeting, responseHeaders)->
+          $log.log 'success handler'
+          $log.log "response data:#{savedGreeting}"
+          if modalSelector?
+            $scope.hideModal(modalSelector)
+          $scope.reset()
+        ,
+        (httpResponse) ->
+          $log.log 'failure handler'
+      )
 
     $scope.reset = () ->
       $scope.greeting = angular.copy $scope.master
 
     $scope.reset()
 
-    $log.log '< GreetingCreateController'
+    $log.log '< GreetingCreateFormController'
 ]
