@@ -17,7 +17,7 @@ karma = require('karma').server
 
 config =
   name: 'skeleton'
-  version: '0.1.0'
+  version: '0.2.0'
 
 gulp.task 'clean', (cb) ->
   del ['dist'], cb
