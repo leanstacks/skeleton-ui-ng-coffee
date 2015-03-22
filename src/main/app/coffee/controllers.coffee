@@ -29,16 +29,6 @@ skeletonControllers.controller 'GreetingListController', ['$scope', '$log', 'Gre
 
     $scope.greetingSort = 'text'
 
-    $scope.showModal = (selector) ->
-      $log.log 'showModal'
-      $(selector).modal 'show'
-      null
-
-    $scope.hideModal = (selector) ->
-      $log.log 'hideModal'
-      $(selector).modal 'hide'
-      null
-
     $log.log '< GreetingListController'
 ]
 
@@ -77,12 +67,15 @@ skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log'
         (savedGreeting, responseHeaders)->
           $log.log 'success handler'
           $log.log "response data:#{savedGreeting}"
-          if modalSelector?
-            $scope.hideModal(modalSelector)
+          # If inside modal, hide it.
+          $scope.$hide() if $scope.$hide?
+
+          #Reset the form content.
           $scope.reset()
         ,
         (httpResponse) ->
           $log.log 'failure handler'
+          # TODO: Display Error Message
       )
 
     $scope.reset = () ->
