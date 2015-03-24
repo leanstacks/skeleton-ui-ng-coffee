@@ -16,7 +16,6 @@ module.exports = (config) ->
     files: [
       'dist/assets/lib/jquery-2.1.3.min.js',
       'dist/assets/lib/json2.js',
-      'dist/assets/lib/bootstrap-3.3.4/js/bootstrap.min.js',
       'dist/assets/lib/angular-1.3.14.min.js',
       'dist/assets/lib/angular-resource-1.3.14.min.js',
       'dist/assets/lib/angular-route-1.3.14.min.js',
