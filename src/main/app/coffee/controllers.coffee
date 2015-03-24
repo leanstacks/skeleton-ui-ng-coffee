@@ -51,8 +51,8 @@ skeletonControllers.controller 'GreetingCreateController', ['$scope', '$log',
 ]
 
 # Define the GreetingCreateFormController Controller
-skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log', 'Greeting',
-  ($scope, $log, Greeting) ->
+skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log', '$alert', 'Greeting',
+  ($scope, $log, $alert, Greeting) ->
     $log.log '> GreetingCreateFormController'
 
     $scope.master = {}
@@ -75,7 +75,11 @@ skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log'
         ,
         (httpResponse) ->
           $log.log 'failure handler'
-          # TODO: Display Error Message
+          $alert
+            title: 'Oops'
+            content: 'An unexpected problem has occurred. Please try again.'
+            type: 'danger'
+            container: '#form-greeting-create-alert'
       )
 
     $scope.reset = () ->
