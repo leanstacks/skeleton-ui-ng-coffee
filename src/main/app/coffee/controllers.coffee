@@ -6,6 +6,27 @@ skeletonControllers.controller 'HeaderController', ['$scope', '$log'
   ($scope, $log) ->
     $log.log '> HeaderController'
 
+    $scope.greetingMenu = [
+        text: 'List'
+        href: '#/greetings'
+      ,
+        divider: true
+      ,
+        text: 'Create'
+        href: '#/greetings/create'
+    ]
+
+    $scope.accountMenu = [
+        text: 'Profile'
+        href: '#/account'
+      ,
+        divider: true
+      ,
+        text: 'Sign Out'
+        href: '#/account/signout'
+    ]
+
+
     $scope.preventDefaultAction = (e) ->
       e.preventDefault()
 

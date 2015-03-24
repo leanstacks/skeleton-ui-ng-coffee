@@ -16,22 +16,12 @@
       <ul class="nav navbar-nav">
         <li data-match-route="/home"><a href="#/home">Home</a></li>
         <li class="dropdown">
-          <a href="#" ng-click="preventDefaultAction($event)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" bs-dropdown>Greetings <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li data-match-route="/?(greetings$)"><a href="#/greetings">List</a></li>
-            <li class="divider"></li>
-            <li data-match-route="/greetings/create"><a href="#/greetings/create">Create</a></li>
-          </ul>
+          <a href="#" ng-click="preventDefaultAction($event)" role="button" aria-expanded="false" bs-dropdown="greetingMenu" data-animation="am-flip-x">Greetings <span class="caret"></span></a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" ng-click="preventDefaultAction($event)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" bs-dropdown>Account <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#/account">Profile</a></li>
-            <li class="divider"></li>
-            <li><a href="#/account/signout">Sign Out</a></li>
-          </ul>
+          <a href="#" ng-click="preventDefaultAction($event)" role="button" aria-expanded="false" bs-dropdown="accountMenu" data-animation="am-flip-x">Account <span class="caret"></span></a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
