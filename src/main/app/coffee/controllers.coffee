@@ -80,8 +80,7 @@ skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log'
     messages = null
 
     # formData - required parameter
-    # modalSelector - pass DOM selector if form embedded in modal
-    $scope.create = (formData, modalSelector) ->
+    $scope.create = (formData) ->
       $log.log '- creating new Greeting'
       $log.log 'form data:' + JSON.stringify formData
 
