@@ -77,13 +77,17 @@ skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log'
     $log.log '> GreetingCreateFormController'
 
     $scope.master = {}
+    messages = null
 
     # formData - required parameter
     # modalSelector - pass DOM selector if form embedded in modal
     $scope.create = (formData, modalSelector) ->
       $log.log '- creating new Greeting'
       $log.log 'form data:' + JSON.stringify formData
+
+      # instantiate a new Greeting resource with the form data
       newGreeting = new Greeting formData
+      # save the Greeting (i.e. POST to server)
       newGreeting.$save(
         (savedGreeting, responseHeaders)->
           $log.log 'success handler'
@@ -93,14 +97,19 @@ skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log'
 
           #Reset the form content.
           $scope.reset()
+          null
         ,
         (httpResponse) ->
           $log.log 'failure handler'
-          $alert
+          # if messages previously displayed, hide old messages
+          messages.hide() if messages?
+          # display alert with messages
+          messages = $alert
             title: 'Oops'
             content: 'An unexpected problem has occurred. Please try again.'
             type: 'danger'
             container: '#form-greeting-create-alert'
+          null
       )
 
     $scope.reset = () ->
