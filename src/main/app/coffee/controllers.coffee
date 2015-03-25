@@ -46,6 +46,8 @@ skeletonControllers.controller 'GreetingListController', ['$scope', '$log', 'Gre
   ($scope, $log, Greeting) ->
     $log.log '> GreetingListController'
 
+    $scope.greetingInfoClass = 'text-muted'
+
     $scope.greetings = Greeting.query()
 
     $scope.greetingSort = 'text'
