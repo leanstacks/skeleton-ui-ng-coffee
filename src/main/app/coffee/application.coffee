@@ -2,7 +2,9 @@
 
 skeletonApp = angular.module 'skeletonApp', [
   'ngRoute',
-  'skeletonControllers'
+  'ngAnimate',
+  'mgcrea.ngStrap',
+  'skeletonControllers',
   'skeletonServices'
 ]
 

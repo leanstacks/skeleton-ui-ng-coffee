@@ -6,6 +6,27 @@ skeletonControllers.controller 'HeaderController', ['$scope', '$log'
   ($scope, $log) ->
     $log.log '> HeaderController'
 
+    $scope.greetingMenu = [
+        text: 'List'
+        href: '#/greetings'
+      ,
+        divider: true
+      ,
+        text: 'Create'
+        href: '#/greetings/create'
+    ]
+
+    $scope.accountMenu = [
+        text: 'Profile'
+        href: '#/account'
+      ,
+        divider: true
+      ,
+        text: 'Sign Out'
+        href: '#/account/signout'
+    ]
+
+
     $scope.preventDefaultAction = (e) ->
       e.preventDefault()
 
@@ -25,19 +46,11 @@ skeletonControllers.controller 'GreetingListController', ['$scope', '$log', 'Gre
   ($scope, $log, Greeting) ->
     $log.log '> GreetingListController'
 
+    $scope.greetingInfoClass = 'text-muted'
+
     $scope.greetings = Greeting.query()
 
     $scope.greetingSort = 'text'
-
-    $scope.showModal = (selector) ->
-      $log.log 'showModal'
-      $(selector).modal 'show'
-      null
-
-    $scope.hideModal = (selector) ->
-      $log.log 'hideModal'
-      $(selector).modal 'hide'
-      null
 
     $log.log '< GreetingListController'
 ]
@@ -61,28 +74,43 @@ skeletonControllers.controller 'GreetingCreateController', ['$scope', '$log',
 ]
 
 # Define the GreetingCreateFormController Controller
-skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log', 'Greeting',
-  ($scope, $log, Greeting) ->
+skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log', '$alert', 'Greeting',
+  ($scope, $log, $alert, Greeting) ->
     $log.log '> GreetingCreateFormController'
 
     $scope.master = {}
+    messages = null
 
     # formData - required parameter
-    # modalSelector - pass DOM selector if form embedded in modal
-    $scope.create = (formData, modalSelector) ->
+    $scope.create = (formData) ->
       $log.log '- creating new Greeting'
       $log.log 'form data:' + JSON.stringify formData
+
+      # instantiate a new Greeting resource with the form data
       newGreeting = new Greeting formData
+      # save the Greeting (i.e. POST to server)
       newGreeting.$save(
         (savedGreeting, responseHeaders)->
           $log.log 'success handler'
           $log.log "response data:#{savedGreeting}"
-          if modalSelector?
-            $scope.hideModal(modalSelector)
+          # If inside modal, hide it.
+          $scope.$hide() if $scope.$hide?
+
+          #Reset the form content.
           $scope.reset()
+          null
         ,
         (httpResponse) ->
           $log.log 'failure handler'
+          # if messages previously displayed, hide old messages
+          messages.hide() if messages?
+          # display alert with messages
+          messages = $alert
+            title: 'Oops'
+            content: 'An unexpected problem has occurred. Please try again.'
+            type: 'danger'
+            container: '#form-greeting-create-alert'
+          null
       )
 
     $scope.reset = () ->

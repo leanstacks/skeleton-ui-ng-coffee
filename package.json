@@ -1,7 +1,7 @@
 {
   "name": "skeleton-spa",
   "description": "Skeleton Angular SPA Project",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "dependencies": {},
   "devDependencies": {
     "coffee-script": "^1.9.1",
