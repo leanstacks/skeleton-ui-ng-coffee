@@ -41,7 +41,7 @@ gulp.task 'scripts', ->
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/assets/app/js'))
 
-gulp.task 'partials', ->
+gulp.task 'templates', ->
   gulp.src('src/main/app/partials/**/*.html')
      .pipe(gulp.dest('dist/assets/app/partials'))
 
@@ -80,13 +80,13 @@ gulp.task 'unittest', ->
     singleRun: true
 
 gulp.task 'default', ['clean'], ->
-  gulp.start 'lib', 'partials', 'scripts', 'html', 'css', 'images', 'data'
+  gulp.start 'lib', 'templates', 'scripts', 'html', 'css', 'images', 'data'
 
 gulp.task 'dist', ['clean'], ->
-  sequence ['lib', 'partials', 'scripts', 'html', 'css', 'images', 'data'], 'tar'
+  sequence ['lib', 'templates', 'scripts', 'html', 'css', 'images', 'data'], 'tar'
 
-gulp.task 'run', ['lib', 'partials', 'scripts', 'html', 'stylehtml', 'css', 'images', 'data'], ->
-  gulp.watch 'src/main/app/partials/**/*.html', ['partials']
+gulp.task 'run', ['lib', 'templates', 'scripts', 'html', 'stylehtml', 'css', 'images', 'data'], ->
+  gulp.watch 'src/main/app/partials/**/*.html', ['templates']
   gulp.watch 'src/main/app/coffee/**/*.coffee', ['scripts']
   gulp.watch 'src/main/app/*.html', ['html']
   gulp.watch 'src/main/app/styleguide.html', ['stylehtml']
@@ -102,4 +102,4 @@ gulp.task 'run', ['lib', 'partials', 'scripts', 'html', 'stylehtml', 'css', 'ima
     ))
 
 gulp.task 'test', ['clean'], ->
-  sequence ['lib', 'partials', 'scripts', 'html', 'css', 'images', 'data'], 'unittest'
+  sequence ['lib', 'templates', 'scripts', 'html', 'css', 'images', 'data'], 'unittest'
