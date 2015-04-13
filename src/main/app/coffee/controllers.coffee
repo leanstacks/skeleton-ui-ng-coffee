@@ -33,6 +33,16 @@ skeletonControllers.controller 'HeaderController', ['$scope', '$log'
     $log.log '< HeaderController'
 ]
 
+# Define the FooterController Controller
+skeletonControllers.controller 'FooterController', ['$scope', '$log'
+  ($scope, $log) ->
+    $log.log '> FooterController'
+
+    $scope.currentDateTime = new Date()
+
+    $log.log '< FooterController'
+]
+
 # Define the HomeController Controller
 skeletonControllers.controller 'HomeController', ['$scope', '$log'
   ($scope, $log) ->
