@@ -123,7 +123,11 @@ skeletonControllers.controller 'GreetingCreateFormController', ['$scope', '$log'
           null
       )
 
-    $scope.reset = () ->
+    $scope.reset = (form) ->
+      if form?
+        form.$setPristine()
+        form.$setUntouched()
+      messages.hide() if messages?
       $scope.greeting = angular.copy $scope.master
 
     $scope.reset()
