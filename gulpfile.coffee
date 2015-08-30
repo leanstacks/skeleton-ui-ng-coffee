@@ -17,7 +17,7 @@ karma = require('karma').server
 
 config =
   name: 'skeleton'
-  version: '0.2.0'
+  version: '0.3.0'
 
 gulp.task 'clean', (cb) ->
   del ['dist'], cb
@@ -55,6 +55,8 @@ gulp.task 'stylehtml', ->
 
 gulp.task 'css', ->
   gulp.src('src/main/app/css/**/*.css')
+    .pipe(rename({ suffix: '-' }))
+    .pipe(rename({ suffix: config.version }))
     .pipe(gulp.dest('dist/assets/app/css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
