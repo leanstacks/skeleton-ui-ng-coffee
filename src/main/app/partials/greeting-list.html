@@ -12,30 +12,28 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6">
-      <form class="form-inline">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="greeting-filter">Filter:</label>
-              <input type="text" class="form-control input-sm" id="greeting-filter" placeholder="type to filter list" ng-model="greetingFilter" />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="greeting-sort">Sort:</label>
-              <select class="form-control input-sm" id="greeting-sort" ng-model="greetingSort">
-                <option value="text">Alphabetical</option>
-                <option value="lang">Language</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </form>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="btn-group" role="group" aria-label="Sort Greetings">
+        <button type="button" ng-click="greetingSort='text'" class="btn btn-sm btn-default" ng-class="{active: greetingSort==='text'}"><i class="fa fa-fw fa-sort-alpha-asc"></i></button>
+        <button type="button" ng-click="greetingSort='lang'" class="btn btn-sm btn-default" ng-class="{active: greetingSort==='lang'}"><i class="fa fa-fw fa-language"></i></button>
+      </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="filter-addon"><i class="fa fa-filter"></i></span>
+        <input type="text" id="greeting-filter" class="form-control input-sm" aria-describedby="filter-addon" placeholder="type to filter list" ng-model="greetingFilter" />
+      </div>
+    </div>
+    <div class="col-md-6 hidden-sm hidden-xs">
       <div class="pull-right">
-        <button type="button" class="btn btn-default" data-container="#modal-container" data-template-url="assets/app/partials/greeting-create-modal.html" bs-modal="modal">
+        <button type="button" class="btn btn-sm btn-default" data-container="#modal-container" data-template-url="assets/app/partials/greeting-create-modal.html" bs-modal="modal">
+          <i class="fa fa-plus text-primary"></i> Create
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-12 visible-sm-block visible-xs-block">
+      <div>
+        <button type="button" class="btn btn-sm btn-default" data-container="#modal-container" data-template-url="assets/app/partials/greeting-create-modal.html" bs-modal="modal">
           <i class="fa fa-plus text-primary"></i> Create
         </button>
       </div>
