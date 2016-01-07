@@ -16,15 +16,15 @@ module.exports = (config) ->
     files: [
       'dist/assets/lib/jquery-2.1.4.min.js',
       'dist/assets/lib/json2.js',
-      'dist/assets/lib/angular-1.4.3.min.js',
-      'dist/assets/lib/angular-resource-1.4.3.min.js',
-      'dist/assets/lib/angular-route-1.4.3.min.js',
-      'dist/assets/lib/angular-animate-1.4.3.min.js',
-      'dist/assets/lib/angular-strap-2.3.1.min.js',
-      'dist/assets/lib/angular-strap-2.3.1.tpl.min.js',
+      'dist/assets/lib/angular-1.4.8.min.js',
+      'dist/assets/lib/angular-resource-1.4.8.min.js',
+      'dist/assets/lib/angular-route-1.4.8.min.js',
+      'dist/assets/lib/angular-animate-1.4.8.min.js',
+      'dist/assets/lib/angular-strap-2.3.6.min.js',
+      'dist/assets/lib/angular-strap-2.3.6.tpl.min.js',
       'dist/assets/app/js/app*.min.js',
-      'src/test/lib/jasmine-jquery-2.1.0.js',
-      'src/test/lib/angular-mocks.js',
+      'src/test/lib/jasmine-jquery-2.1.1.js',
+      'src/test/lib/angular-mocks-1.4.8.js',
       'src/test/app/coffee/**/*Spec.coffee'
     ]
 
