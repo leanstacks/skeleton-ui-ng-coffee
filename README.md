@@ -1,4 +1,4 @@
-# Project Skeleton for Angular.js
+# Project Skeleton for AngularJS
 
 ## Acknowledgements
 
@@ -6,7 +6,7 @@ This is a [LEAN**STACKS**](http://www.leanstacks.com) solution.
 
 ## Getting Started
 
-This is a project skeleton for an [Angular.js](https://angularjs.org/) Single-Page Application, or SPA.  
+This is a project skeleton for an [AngularJS](https://angularjs.org/) Single-Page Application, or SPA.  
 
 ## Languages
 
@@ -16,7 +16,7 @@ This project is authored in [CoffeeScript](http://coffeescript.org).
 
 ### Fork the Repository
 
-Fork the [Angular.js project skeleton](https://github.com/mwarman/skeleton-ui-ng-coffee) on GitHub.  Clone the forked project to the host machine.
+Fork the [AngularJS project skeleton](https://github.com/mwarman/skeleton-ui-ng-coffee) GitHub repository.  Clone the forked project to the host machine.
 
 ### Dependencies
 
