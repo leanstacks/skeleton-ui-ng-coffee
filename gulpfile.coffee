@@ -7,13 +7,13 @@ concat = require 'gulp-concat'
 rename = require 'gulp-rename'
 uglify = require 'gulp-uglify'
 sourcemaps = require 'gulp-sourcemaps'
-minifycss = require 'gulp-minify-css'
+minifycss = require 'gulp-clean-css'
 server = require 'gulp-webserver'
 del = require 'del'
 sequence = require 'run-sequence'
 tar = require 'gulp-tar'
 gzip = require 'gulp-gzip'
-karma = require('karma').server
+KarmaServer = require('karma').Server
 
 config =
   name: 'skeleton'
@@ -76,10 +76,13 @@ gulp.task 'tar', ->
     .pipe(gzip())
     .pipe(gulp.dest('dist'))
 
-gulp.task 'unittest', ->
-  karma.start
+gulp.task 'unittest', (cb) ->
+  kServer = new KarmaServer
     configFile: __dirname + '/karma.conf.coffee'
     singleRun: true
+  ,
+    cb
+  kServer.start()
 
 gulp.task 'default', ['clean'], ->
   gulp.start 'lib', 'templates', 'scripts', 'html', 'css', 'images', 'data'
