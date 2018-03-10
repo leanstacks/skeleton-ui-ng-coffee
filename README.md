@@ -1,5 +1,9 @@
 # Project Skeleton for AngularJS
 
+## Notes
+
+This project has been deprecated in favor of the new [AngularJS Starter Project](https://github.com/leanstacks/skeleton-ui-ng).
+
 ## Acknowledgements
 
 This is a [LEAN**STACKS**](http://www.leanstacks.com) solution.
